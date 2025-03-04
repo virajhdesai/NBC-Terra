@@ -30,6 +30,16 @@ resource "akamai_property" "Viraj_Master_Lab_2023" {
   group_id    = var.group_id
   product_id  = "prd_Fresca"
   hostnames {
+    cname_from             = "test.virajterra.gsslab.com"
+    cname_to               = akamai_edge_hostname.virajdesai1-edgekey-net.edge_hostname
+    cert_provisioning_type = "DEFAULT"
+  }
+  hostnames {
+    cname_from             = "test1.virajterra.gsslab.com"
+    cname_to               = akamai_edge_hostname.virajdesai1-edgekey-net.edge_hostname
+    cert_provisioning_type = "DEFAULT"
+  }
+  hostnames {
     cname_from             = "viraj-fail.gsshappylearning.com"
     cname_to               = akamai_edge_hostname.virajdesai1-edgekey-net.edge_hostname
     cert_provisioning_type = "DEFAULT"
@@ -50,15 +60,15 @@ resource "akamai_property_activation" "Viraj_Master_Lab_2023-staging" {
   version                        = var.activate_latest_on_staging ? akamai_property.Viraj_Master_Lab_2023.latest_version : akamai_property.Viraj_Master_Lab_2023.staging_version
   network                        = "STAGING"
   note                           = "Reference Error in Response Header"
-  auto_acknowledge_rule_warnings = false
+  auto_acknowledge_rule_warnings = true
 }
 
 # NOTE: Be careful when removing this resource as you can disable traffic
-resource "akamai_property_activation" "Viraj_Master_Lab_2023-production" {
-  property_id                    = akamai_property.Viraj_Master_Lab_2023.id
-  contact                        = ["videsa@akamai.com"]
-  version                        = var.activate_latest_on_production ? akamai_property.Viraj_Master_Lab_2023.latest_version : akamai_property.Viraj_Master_Lab_2023.production_version
-  network                        = "PRODUCTION"
-  note                           = "True client ip"
-  auto_acknowledge_rule_warnings = false
-}
+# resource "akamai_property_activation" "Viraj_Master_Lab_2023-production" {
+#   property_id                    = akamai_property.Viraj_Master_Lab_2023.id
+#   contact                        = ["videsa@akamai.com"]
+#   version                        = var.activate_latest_on_production ? akamai_property.Viraj_Master_Lab_2023.latest_version : akamai_property.Viraj_Master_Lab_2023.production_version
+#   network                        = "PRODUCTION"
+#   note                           = "True client ip"
+#   auto_acknowledge_rule_warnings = false
+# }

@@ -3,9 +3,10 @@
   "contractId": "ctr_1-1NC95D",
   "groupId": "grp_241797",
   "propertyId": "prp_953041",
-  "propertyVersion": 448,
-  "etag": "f58efd2041dd9626846e03bd2d3149d598d26748",
+  "propertyVersion": 516,
+  "etag": "1dd02afc369bc3443f8484f08fc0614aedd648f1",
   "ruleFormat": "latest",
+  "comments": "Reference Error in Response Header",
   "rules": {
     "name": "default",
     "behaviors": [
@@ -77,7 +78,6 @@
           "tlsVersionTitle": "",
           "trueClientIpClientSetting": true,
           "trueClientIpHeader": "True-Client-IP",
-          "useUniqueCacheKey": false,
           "verificationMode": "CUSTOM"
         }
       },
@@ -113,20 +113,44 @@
         }
       },
       {
-        "name": "responseCode",
+        "name": "originIpAcl",
         "options": {
-          "statusCode": 404
+          "enable": true
         }
       }
     ],
     "children": [
+      "#include:Redirect_to_HTTPS.json",
       "#include:_content__.json",
+      "#include:Request_Timestamp.json",
+      "#include:Request_Timestamp_for_Parent.json",
       "#include:Break_connection.json",
       "#include:Reference_Error.json"
     ],
     "comments": "The Default Rule template contains all the necessary and recommended behaviors. Rules are evaluated from top to bottom and the last matching rule wins.",
     "uuid": "default",
     "variables": [
+      {
+        "description": "",
+        "hidden": false,
+        "name": "PMUSER_REQ_TIMESTAMP",
+        "sensitive": false,
+        "value": ""
+      },
+      {
+        "description": "",
+        "hidden": false,
+        "name": "PMUSER_JA3_FINGERPRINT",
+        "sensitive": false,
+        "value": ""
+      },
+      {
+        "description": "",
+        "hidden": false,
+        "name": "PMUSER_TLS_CLIENT_HELLO",
+        "sensitive": false,
+        "value": ""
+      },
       {
         "description": "",
         "hidden": false,

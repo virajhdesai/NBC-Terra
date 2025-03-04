@@ -8,8 +8,7 @@
           "downloadDomainName": "atf.download.akamai.com",
           "g2oToken": null
         },
-        "originType": "NET_STORAGE",
-        "useUniqueCacheKey": false
+        "originType": "NET_STORAGE"
       }
     },
     {
@@ -17,7 +16,7 @@
       "options": {
         "behavior": "MAX_AGE",
         "mustRevalidate": false,
-        "ttl": "10m"
+        "ttl": "100m"
       }
     },
     {

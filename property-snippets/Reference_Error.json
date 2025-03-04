@@ -16,6 +16,19 @@
       }
     }
   ],
+  "criteria": [
+    {
+      "name": "path",
+      "options": {
+        "matchCaseSensitive": false,
+        "matchOperator": "MATCHES_ONE_OF",
+        "normalize": false,
+        "values": [
+          "/test/"
+        ]
+      }
+    }
+  ],
   "name": "Reference Error",
   "options": {},
   "uuid": "cbfae6c1-ff6d-4fc0-b75a-3fa4937c4fde",
