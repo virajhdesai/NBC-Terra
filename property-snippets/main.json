@@ -6,7 +6,7 @@
   "propertyVersion": 516,
   "etag": "1dd02afc369bc3443f8484f08fc0614aedd648f1",
   "ruleFormat": "latest",
-  "comments": "Reference Error in Response Header",
+  "comments": "Testing activation in both staging & prod",
   "rules": {
     "name": "default",
     "behaviors": [

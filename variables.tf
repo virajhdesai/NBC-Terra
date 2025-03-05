@@ -25,5 +25,5 @@ variable "activate_latest_on_staging" {
 
 variable "activate_latest_on_production" {
   type    = bool
-  default = false
+  default = true
 }

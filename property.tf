@@ -59,16 +59,21 @@ resource "akamai_property_activation" "Viraj_Master_Lab_2023-staging" {
   contact                        = ["videsa@akamai.com"]
   version                        = var.activate_latest_on_staging ? akamai_property.Viraj_Master_Lab_2023.latest_version : akamai_property.Viraj_Master_Lab_2023.staging_version
   network                        = "STAGING"
-  note                           = "Reference Error in Response Header"
+  note                           = "Testing activation in both staging & prod"
   auto_acknowledge_rule_warnings = true
 }
 
 # NOTE: Be careful when removing this resource as you can disable traffic
-# resource "akamai_property_activation" "Viraj_Master_Lab_2023-production" {
-#   property_id                    = akamai_property.Viraj_Master_Lab_2023.id
-#   contact                        = ["videsa@akamai.com"]
-#   version                        = var.activate_latest_on_production ? akamai_property.Viraj_Master_Lab_2023.latest_version : akamai_property.Viraj_Master_Lab_2023.production_version
-#   network                        = "PRODUCTION"
-#   note                           = "True client ip"
-#   auto_acknowledge_rule_warnings = false
-# }
+resource "akamai_property_activation" "Viraj_Master_Lab_2023-production" {
+  property_id                    = akamai_property.Viraj_Master_Lab_2023.id
+  contact                        = ["videsa@akamai.com"]
+  version                        = var.activate_latest_on_production ? akamai_property.Viraj_Master_Lab_2023.latest_version : akamai_property.Viraj_Master_Lab_2023.production_version
+  network                        = "PRODUCTION"
+  note                           = "Testing activation in both staging & prod"
+  auto_acknowledge_rule_warnings = true
+  compliance_record {
+    noncompliance_reason_other {
+      other_noncompliance_reason = "NO_PRODUCTION_TRAFFIC"
+    }
+  }
+}
